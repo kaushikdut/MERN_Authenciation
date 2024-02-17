@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const router = express.Router();
 
@@ -27,7 +28,7 @@ router.post("/signup", async (req, res) => {
     newUser.save();
     res.status(201).json({ message: "User added Successfully" });
   } catch (error) {
-    console.error(error);
+    console.error("Error during login:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });
@@ -46,13 +47,14 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid password" });
     }
 
-    const token = jwt.sign({ userId: user._id }, MY_SECRET_KEY, {
+    const token = jwt.sign({ userId: user._id }, process.env.MY_SECRET_KEY, {
       expiresIn: "1h",
     });
 
     res.status(200).json({ token });
-  } catch {
-    res.status(500).json({ error: "Internal Error" });
+  } catch (err) {
+    console.error("Error during login:", err);
+    res.status(500).json({ error: "Error Caught" });
   }
 });
 

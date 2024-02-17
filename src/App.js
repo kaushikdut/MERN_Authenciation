@@ -9,11 +9,6 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {/* <Route
-          path="/"
-          element={<ProtectRoute path="/dashboard" component={Dashboard} />}
-        /> */}
-        {/* <Route path="/" element={<ProtectRoute />} /> */}
         <Route
           path="/"
           element={

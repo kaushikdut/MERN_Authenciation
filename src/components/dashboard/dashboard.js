@@ -1,15 +1,14 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import Header from "./header/header";
+import PhotoUpload from "./photoUpload/photoUpload";
+import PhotoList from "./photoList/photoList";
 
 function Dashboard() {
-  const navigate = useNavigate();
-  const logout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
   return (
     <div>
-      <button onClick={logout}>Logout</button>
+      <Header />
+      <PhotoUpload />
+      <PhotoList />
     </div>
   );
 }

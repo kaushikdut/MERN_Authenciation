@@ -1,0 +1,16 @@
+.feed {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.image {
+  height: 50rem;
+
+  margin: 1px;
+}
